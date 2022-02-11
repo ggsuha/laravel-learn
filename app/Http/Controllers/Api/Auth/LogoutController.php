@@ -17,6 +17,6 @@ class LogoutController extends Controller
     {
         auth()->user()->tokens()->delete();
 
-        return response()->json([]);
+        return empty_object();
     }
 }
