@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', LoginController::class);
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/', function () {
-        dd('a');
+Route::middleware(['locale'])->group(function () {
+    Route::post('login', LoginController::class);
+    
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/', function () {
+            dd('a');
+        });
+        Route::post('logout', LogoutController::class);
     });
-    Route::post('logout', LogoutController::class);
 });
